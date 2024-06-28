@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 import project.springframework.spring_6_webapp.domain.Author;
 import project.springframework.spring_6_webapp.domain.Book;
 import project.springframework.spring_6_webapp.domain.Publisher;
-import project.springframework.spring_6_webapp.repository.AuthorRepository;
-import project.springframework.spring_6_webapp.repository.BookRepository;
-import project.springframework.spring_6_webapp.repository.PublisherRepository;
+import project.springframework.spring_6_webapp.repositories.AuthorRepository;
+import project.springframework.spring_6_webapp.repositories.BookRepository;
+import project.springframework.spring_6_webapp.repositories.PublisherRepository;
 
 @Component
 public class BootstrapData implements CommandLineRunner {
@@ -61,6 +61,8 @@ public class BootstrapData implements CommandLineRunner {
 
         aliceSaved.getBooks().add(pulpSaved);
         bobSaved.getBooks().add(financeSaved);
+        pulpSaved.getAuthors().add(aliceSaved);
+        financeSaved.getAuthors().add(bobSaved);
 
         bookRepository.save(pulpSaved);
         bookRepository.save(financeSaved);
@@ -73,15 +75,15 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("Book count = " + bookRepository.count());
         System.out.println("Publisher count = " + publisherRepository.count());
 
-        System.out.println("\nAuthors : ");
-        System.out.println(aliceSaved.toString());
-        System.out.println(bobSaved.toString());
-
-        System.out.println("\nBooks : ");
-        System.out.println(pulpSaved.toString());
-        System.out.println(financeSaved.toString());
-
-        System.out.println("\nPublishers : ");
-        System.out.println(macmillanSaved.toString());
+//        System.out.println("\nAuthors : ");
+//        System.out.println(aliceSaved.toString());
+//        System.out.println(bobSaved.toString());
+//
+//        System.out.println("\nBooks : ");
+//        System.out.println(pulpSaved.toString());
+//        System.out.println(financeSaved.toString());
+//
+//        System.out.println("\nPublishers : ");
+//        System.out.println(macmillanSaved.toString());
     }
 }
